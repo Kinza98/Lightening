@@ -1,4 +1,6 @@
-window.addEventListener("load", function(){
+  let soundOn = false;
+
+  window.addEventListener("load", function(){
   const rainSound = document.getElementById("rainSound");
   const lightSound = document.getElementById("lightSound");
   this.document.getElementById("preloader").style.display = "none";
@@ -119,16 +121,38 @@ window.addEventListener("load", function(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     skyEffect();
     if(Math.random() < 0.05){
-      lightSound.currentTime = 0;  // rewind to start
-      lightSound.play();
+      if(soundOn){
+        lightSound.currentTime = 0;  // rewind to start
+        lightSound.play();
+      }else{
+        lightSound.pause();
+      }
       flashScreen();
       lightening();
     }
     intensityChange();
-    rainSound.muted = false;
+    if(soundOn)
+     rainSound.play()
+    else
+      rainSound.pause();
     drawRainDrop();
     requestAnimationFrame(thunder)
   }
   thunder();
   this.window.addEventListener("resize", resizeCanvas)
 })
+
+
+function volumeChange(){
+  soundOn = !soundOn;
+  let volEle = document.getElementById("sound")
+  if(volEle.classList.contains("fa-volume-up")){
+    volEle.classList.remove("fa-volume-up")
+    volEle.classList.add("fa-volume-off")
+  }else{
+    volEle.classList.add("fa-volume-up")
+    volEle.classList.remove("fa-volume-off")
+  }
+}
+
+document.getElementById("sound").addEventListener("click", volumeChange)

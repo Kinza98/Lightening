@@ -7,16 +7,21 @@
     <meta name="author" content="kinza" />
     <meta name="keywords" content="weather, rain, lightening, thunder" />
     <meta name="description" content="a raining and lightening effect using canvas" />
-    <link rel="stylesheet" href="style.css" />
+    <!-- font awesome icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- styling -->
+    <link rel="stylesheet" href="src/style.css" />
   </head>
   <body>
-      <!-- Preloader -->
+    <!-- Preloader -->
     <div id="preloader">
       <div class="loader"></div>
     </div>
-    <audio id="rainSound" src="rain.mp3" autoplay loop></audio>
-    <audio id="lightSound" src="lightening.mp3" autoplay loop ></audio>
+    <audio id="rainSound" src="src/audios/rain.mp3" autoplay loop></audio> <!-- rain sound-->
+    <audio id="lightSound" src="src/audios/lightening.mp3" autoplay loop ></audio> <!--lightening sound -->
     <canvas id="canvas"></canvas>
-    <script src="script.js"></script>
+    <i class="fa fa-volume-off" id="sound"></i>
+    <!-- JS files -->
+    <script src="src/script.js"></script>
   </body>
 </html>
