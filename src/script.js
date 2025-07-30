@@ -107,40 +107,27 @@
     }
   }
 
- let lastThunderTime = 0;
-const thunderCooldown = 1000; // milliseconds
-
-function thunder() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  skyEffect();
-
-  const now = Date.now();
-
-  // Lightning sound & effect with cooldown
-  if (Math.random() < 0.05 && now - lastThunderTime > thunderCooldown) {
-    if (soundOn) {
-      lightSound.currentTime = 0;
-      lightSound.play().catch(err => console.warn("lightSound play error:", err));
+  function thunder(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    skyEffect();
+    if(Math.random() < 0.05){
+      if(soundOn){
+        lightSound.currentTime = 0;  // rewind to start
+        lightSound.play();
+      }else{
+        lightSound.pause();
+      }
+      flashScreen();
+      lightening();
     }
-    flashScreen();
-    lightening();
-    lastThunderTime = now;
+    intensityChange();
+    if(soundOn)
+      rainSound.play()
+    else
+      rainSound.pause();
+    drawRainDrop();
+    requestAnimationFrame(thunder)
   }
-
-  intensityChange();
-
-  // Only play rain sound if not already playing
-  if (soundOn && rainSound.paused) {
-    rainSound.loop = true;
-    rainSound.play().catch(err => console.warn("rainSound play error:", err));
-  } else if (!soundOn && !rainSound.paused) {
-    rainSound.pause();
-  }
-
-  drawRainDrop();
-  requestAnimationFrame(thunder);
-}
-
   thunder();
   this.window.addEventListener("resize", resizeCanvas)
 })
