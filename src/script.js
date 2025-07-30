@@ -53,16 +53,6 @@
 
     if(Math.random() < 0.5)
       drawLightening(x, y, segments);
-
-    // setInterval(() => {
-    //     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // }, 500);
-
-    // setInterval(() => {
-    //   if(Math.random() < 0.7){
-    //     lightening()
-    //   }
-    // }, 2000);
   }
 
   const drops = [];
@@ -122,7 +112,7 @@
     skyEffect();
     if(Math.random() < 0.05){
       if(soundOn){
-        lightSound.currentTime = 0;  // rewind to start
+        // lightSound.currentTime = 0;  // rewind to start
         lightSound.play();
       }else{
         lightSound.pause();
@@ -132,7 +122,7 @@
     }
     intensityChange();
     if(soundOn)
-     rainSound.play()
+      rainSound.play()
     else
       rainSound.pause();
     drawRainDrop();
