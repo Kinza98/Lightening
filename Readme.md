@@ -1,30 +1,66 @@
-#How It Works
-#Set a starting point for the lightning line
+# ⚡ Lightning & Thunderstorm Animation
 
-Usually starts from the top of the screen.
+This is a fun weather animation made with **HTML5 Canvas** and **JavaScript**. It shows heavy rain, lightning, and thunder. The lightning flashes randomly, and thunder and rain sounds make it feel more real. It works well on all screen sizes, including mobile.
 
-#Draw lightning by updating the point repeatedly
+## 🌩️ Live Demo
 
-X is updated randomly by -20 to +20 to create a zigzag.
+🔗 [See it in action](https://kinza98.github.io/Lightening/)
 
-Y is increased by about +40 to move the line downward.
+## 🎨 Main Features
 
-Keep connecting new points like this multiple times to form a bolt.
+- ⚡ **Lightning Bolts**  
+  Random zigzag lines appear on the screen to show lightning.
 
-#Call this drawing method every 2 seconds, but:
+- 🌧️ **Animated Rain**  
+  Raindrops fall from the top of the screen, and the amount of rain changes from time to time.
 
-Add a Math.random() check so it only runs sometimes.
+- 🔊 **Sound On/Off**  
+  You can turn thunder and rain sounds on or off by clicking the sound icon.
 
-This gives a natural, random storm effect.
+- 🌫️ **Lightning Flicker**  
+  Some lightning flashes again quickly to look like real-life flickering.
 
-#Flicker effect
+- 📱 **Responsive Design**  
+  The canvas fits any screen size, big or small.
 
-Occasionally draw the lightning again after a very short delay (e.g., 50ms) using the same starting point.
+## 🧠 How It Works
 
-Even from the same position, each bolt looks different due to randomness.
+- **Lightning:**
+  - Starts from a random point at the top.
+  - Moves downward in zigzags.
+  - Sometimes flashes again quickly from the same point.
+  - A light gray flash covers the screen during lightning to look more real.
 
-#Clear the screen
+- **Rain:**
+  - Thin lines fall down to show raindrops.
+  - Their speed, size, and number change randomly.
+  - When you resize the window, the rain adjusts automatically.
 
-Clear the canvas right after drawing, or shortly after.
+- **Sound:**
+  - Thunder sound plays with lightning.
+  - Rain sound plays in the background.
+  - You can mute/unmute the sound with a single click.
 
-Makes each lightning bolt flash and disappear, like real thunder.
+## 🛠️ Built With
+
+- **HTML5**
+- **Canvas API**
+- **JavaScript**
+- **CSS (basic styling)**
+
+## 🎮 Controls
+
+| Action             | What It Does                    |
+|--------------------|---------------------------------|
+| 🔊 Toggle Sound    | Click the icon to mute/unmute   |
+
+## 📸 Preview
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b546fd56-975b-4f58-8720-b06449d769cc" />
+
+## 📄 License
+
+This project is for learning and personal use only.  
+**Please don’t reuse it without permission.**
+
+Made with ❤️ by Kinza

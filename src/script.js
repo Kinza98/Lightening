@@ -107,24 +107,30 @@
     }
   }
 
-  let lastThunderTime = 0;
-const thunderDelay = 2000; // in milliseconds
+  let nextThunderSoundTime = Date.now() + getRandomSoundDelay();
+
+function getRandomSoundDelay() {
+  // Random delay: 30s to 60s (for 1–2 times per minute)
+  return 30000 + Math.random() * 30000; // between 30s and 60s
+}
 
 function thunder() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   skyEffect();
 
   const now = Date.now();
-  if (Math.random() < 0.05 && now - lastThunderTime > thunderDelay) {
-    if (soundOn) {
-      lightSound.currentTime = 0;
-      lightSound.play();
-    }else{
-      lightSound.pause();
-    }
+
+  // ⚡ Flash randomly each frame (frequent flashes)
+  if (Math.random() < 0.05) {
     flashScreen();
     lightening();
-    lastThunderTime = now;
+
+    // 🔊 Play sound only if the timer says it's time
+    if (soundOn && now > nextThunderSoundTime) {
+      lightSound.currentTime = 0;
+      lightSound.play();
+      nextThunderSoundTime = now + getRandomSoundDelay(); // schedule next sound
+    }
   }
 
   intensityChange();
@@ -139,8 +145,9 @@ function thunder() {
   drawRainDrop();
   requestAnimationFrame(thunder);
 }
-  thunder();
-  this.window.addEventListener("resize", resizeCanvas)
+
+thunder();
+this.window.addEventListener("resize", resizeCanvas)
 })
 
 
